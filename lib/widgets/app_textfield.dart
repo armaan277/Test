@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:company_test/constants/app_colors.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class AppTextField extends StatelessWidget {
   final String title;
@@ -36,7 +35,7 @@ class AppTextField extends StatelessWidget {
         decoration: InputDecoration(
           border: InputBorder.none,
           hintText: title,
-          hintStyle: GoogleFonts.inter(fontSize: 15.sp),
+          hintStyle: TextStyle(fontSize: 15.sp),
           isDense: true,
           contentPadding: EdgeInsets.symmetric(vertical: 14.h),
           prefixIconConstraints: BoxConstraints(minWidth: 0, minHeight: 0),

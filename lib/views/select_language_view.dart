@@ -5,7 +5,6 @@ import 'package:company_test/widgets/app_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class SelectLanguageView extends StatefulWidget {
   const SelectLanguageView({super.key});
@@ -32,19 +31,17 @@ class _SelectLanguageViewState extends State<SelectLanguageView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(
-          'Choose Your Language',
-          style: GoogleFonts.inter(
-            fontSize: 20.sp,
-            fontWeight: FontWeight.w500,
-          ),
-        ),
-      ),
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: 20.w),
         child: Column(
           children: [
+            Padding(
+              padding: EdgeInsets.only(top: 43.h, bottom: 13.h),
+              child: Text(
+                'Choose Your Language',
+                style: TextStyle(fontSize: 20.sp, fontWeight: FontWeight.w500),
+              ),
+            ),
             Container(
               height: 615.h,
               decoration: BoxDecoration(
@@ -64,33 +61,64 @@ class _SelectLanguageViewState extends State<SelectLanguageView> {
                           highlightColor: Colors.transparent,
                           hoverColor: Colors.transparent,
                         ),
-                        child: ListTile(
-                          onTap: () {
-                            selectedLanguage = language.title;
-                            setState(() {});
-                          },
-                          title: Text(
-                            language.title,
-                            style: GoogleFonts.inter(
-                              fontSize: 15.sp,
-                              fontWeight: FontWeight.w500,
-                            ),
-                          ),
-                          subtitle: Text(
-                            language.subtitle,
-                            style: GoogleFonts.inter(
-                              fontSize: 14.sp,
-                              color: AppColors.appGrayColor6,
-                            ),
-                          ),
-                          trailing: Radio(
-                            activeColor: Colors.black,
-                            value: language.title,
-                            groupValue: selectedLanguage,
-                            onChanged: (value) {
-                              selectedLanguage = value!;
+                        child: Padding(
+                          padding: EdgeInsets.only(left: 30.w, right: 40.w),
+                          child: ListTile(
+                            contentPadding: EdgeInsets.zero,
+                            onTap: () {
+                              selectedLanguage = language.title;
                               setState(() {});
                             },
+                            title: Text(
+                              language.title,
+                              style: TextStyle(
+                                fontSize: 15.sp,
+                                fontWeight: FontWeight.w500,
+                              ),
+                            ),
+                            subtitle: Text(
+                              language.subtitle,
+                              style: TextStyle(
+                                fontSize: 14.sp,
+                                color: AppColors.appGrayColor6,
+                              ),
+                            ),
+                            trailing: GestureDetector(
+                              onTap: () {
+                                selectedLanguage = language.title;
+                                setState(() {});
+                              },
+                              child: selectedLanguage == language.title
+                                  ? Stack(
+                                      alignment: Alignment.center,
+                                      children: [
+                                        Container(
+                                          height: 18,
+                                          width: 18,
+                                          decoration: BoxDecoration(
+                                            color: Colors.black,
+                                            shape: BoxShape.circle,
+                                          ),
+                                        ),
+                                        Container(
+                                          height: 6,
+                                          width: 6,
+                                          decoration: BoxDecoration(
+                                            color: Colors.white,
+                                            shape: BoxShape.circle,
+                                          ),
+                                        ),
+                                      ],
+                                    )
+                                  : Container(
+                                      height: 18,
+                                      width: 18,
+                                      decoration: BoxDecoration(
+                                        shape: BoxShape.circle,
+                                        border: Border.all(color: Colors.black),
+                                      ),
+                                    ),
+                            ),
                           ),
                         ),
                       ),
